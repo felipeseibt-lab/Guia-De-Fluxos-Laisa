@@ -189,7 +189,7 @@ const DOC_ENTREGAS_DIA = `<div class="doc-inner">
     <div class="deps-box">
       <div class="dep-item"><span class="dep-code">AG7.0</span><div class="dep-desc"><strong>Entregas do dia</strong> — Fluxo principal. Roda em 4 horários fixos: <strong>08h, 12h, 18h e 23h30</strong>. Consulta notas fiscais com previsão de entrega para o dia, gera planilha por transportadora/filial e envia e-mail de cobrança + WhatsApp via Laisa. Registra cada envio no MongoDB com ID rastreável embutido no e-mail.</div></div>
       <div class="dep-item"><span class="dep-code">AG5.0</span><div class="dep-desc"><strong>Followup email</strong> — Roda a cada hora. Verifica e-mails enviados há mais de 3 dias sem resposta e com menos de 3 tentativas. Checa a caixa Gmail da Laisa; se não houve retorno, reenvia a cobrança automaticamente.</div></div>
-      <div class="dep-item"><span class="dep-code">AG5.2</span><div class="dep-desc"><strong>Processamento de arquivos</strong> — Ativado por trigger do Outlook a cada minuto. Identifica respostas das transportadoras pelo ID embutido no e-mail, aciona IA para classificar o anexo recebido (canhoto, ocorrência de atraso ou tabela de prazo) e atualiza o TMS automaticamente.</div></div>
+      <div class="dep-item"><span class="dep-code">AG5.2</span><div class="dep-desc"><strong>Processamento de arquivos</strong> — Ativado por trigger do Gmail a cada minuto. Identifica respostas das transportadoras pelo ID embutido no e-mail, aciona IA para classificar o anexo recebido (canhoto, ocorrência de atraso ou tabela de prazo) e atualiza o TMS automaticamente.</div></div>
     </div>
   </div>
   <div class="doc-divider"></div>
@@ -243,7 +243,7 @@ const DOC_SEM_COLETA = `<div class="doc-inner">
     <div class="deps-box">
       <div class="dep-item"><span class="dep-code">AG6.0</span><div class="dep-desc"><strong>Notas sem coleta</strong> — Fluxo principal. Roda <strong>uma vez por mês, no dia 5 às 07h10</strong>. Busca notas fiscais sem ocorrência de coleta registrada, envia e-mail com planilha anexa para a transportadora e consolidado interno para a equipe. Reforça via WhatsApp quando há celular cadastrado.</div></div>
       <div class="dep-item"><span class="dep-code">AG5.0</span><div class="dep-desc"><strong>Followup email</strong> — Roda a cada hora. Verifica e-mails enviados sem resposta e reenvia a cobrança automaticamente após o prazo configurado.</div></div>
-      <div class="dep-item"><span class="dep-code">AG5.2</span><div class="dep-desc"><strong>Processamento de arquivos</strong> — Ativado por trigger do Outlook. Identifica e classifica os anexos enviados pela transportadora em resposta (EDI de coleta, ocorrência ou prazo) e atualiza o TMS.</div></div>
+      <div class="dep-item"><span class="dep-code">AG5.2</span><div class="dep-desc"><strong>Processamento de arquivos</strong> — Ativado por trigger do Gmail. Identifica e classifica os anexos enviados pela transportadora em resposta (EDI de coleta, ocorrência ou prazo) e atualiza o TMS.</div></div>
     </div>
   </div>
   <div class="doc-divider"></div>
@@ -282,7 +282,7 @@ const DOC_EM_ATRASO = `<div class="doc-inner">
     <div class="deps-box">
       <div class="dep-item"><span class="dep-code">AG3.0</span><div class="dep-desc"><strong>Notas em atraso</strong> — Fluxo principal. Roda a <strong>cada 5 dias às 09h30</strong>. Busca entregas com prazo vencido nos últimos 30 dias sem confirmação de recebimento, envia e-mail com planilha + destaque do documento com maior atraso, e consolida resumo interno para a equipe.</div></div>
       <div class="dep-item"><span class="dep-code">AG5.0</span><div class="dep-desc"><strong>Followup email</strong> — Roda a cada hora. Verifica e-mails sem resposta e reenvia a cobrança automaticamente após o prazo configurado (máx. 3 tentativas).</div></div>
-      <div class="dep-item"><span class="dep-code">AG5.2</span><div class="dep-desc"><strong>Processamento de arquivos</strong> — Ativado por trigger do Outlook. Classifica anexos recebidos (comprovante de entrega, ocorrência de atraso ou tabela de prazo) e atualiza o TMS automaticamente.</div></div>
+      <div class="dep-item"><span class="dep-code">AG5.2</span><div class="dep-desc"><strong>Processamento de arquivos</strong> — Ativado por trigger do Gmail. Classifica anexos recebidos (comprovante de entrega, ocorrência de atraso ou tabela de prazo) e atualiza o TMS automaticamente.</div></div>
     </div>
   </div>
   <div class="doc-divider"></div>
@@ -318,7 +318,7 @@ const DOC_SEM_CANHOTO = `<div class="doc-inner">
     <div class="deps-box">
       <div class="dep-item"><span class="dep-code">AG4.0</span><div class="dep-desc"><strong>Canhoto</strong> — Fluxo principal. Roda <strong>toda segunda-feira às 07h</strong>. Busca entregas realizadas nos últimos 30 dias com ocorrência de entrega (entreganota ou finalizartransporte) mas sem anexo de canhoto. Envia e-mail com planilha para a transportadora e resumo consolidado para o embarcador.</div></div>
       <div class="dep-item"><span class="dep-code">AG5.0</span><div class="dep-desc"><strong>Followup email</strong> — Roda a cada hora. Verifica quais cobranças ainda não tiveram resposta e reenvia automaticamente (máx. 3 tentativas).</div></div>
-      <div class="dep-item"><span class="dep-code">AG5.2</span><div class="dep-desc"><strong>Processamento de arquivos</strong> — Ativado por trigger do Outlook. Quando a transportadora responde com o canhoto em anexo, a IA identifica, extrai os dados e registra o comprovante no TMS automaticamente.</div></div>
+      <div class="dep-item"><span class="dep-code">AG5.2</span><div class="dep-desc"><strong>Processamento de arquivos</strong> — Ativado por trigger do Gmail. Quando a transportadora responde com o canhoto em anexo, a IA identifica, extrai os dados e registra o comprovante no TMS automaticamente.</div></div>
     </div>
   </div>
   <div class="doc-divider"></div>
